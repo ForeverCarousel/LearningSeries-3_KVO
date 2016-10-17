@@ -13,6 +13,9 @@
 		BA4136A01DB482FF00A615A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA41369E1DB482FF00A615A7 /* Main.storyboard */; };
 		BA4136A21DB482FF00A615A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4136A11DB482FF00A615A7 /* Assets.xcassets */; };
 		BA4136A51DB482FF00A615A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA4136A31DB482FF00A615A7 /* LaunchScreen.storyboard */; };
+		BA4136AE1DB4B4F600A615A7 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4136AD1DB4B4F600A615A7 /* Person.m */; };
+		BA4136B11DB4B51800A615A7 /* Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4136B01DB4B51800A615A7 /* Observer.m */; };
+		BA4136B41DB4F81000A615A7 /* NSObject+CarouselKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4136B31DB4F81000A615A7 /* NSObject+CarouselKVO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		BA4136A11DB482FF00A615A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA4136A41DB482FF00A615A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA4136A61DB482FF00A615A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA4136AC1DB4B4F600A615A7 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		BA4136AD1DB4B4F600A615A7 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		BA4136AF1DB4B51800A615A7 /* Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Observer.h; sourceTree = "<group>"; };
+		BA4136B01DB4B51800A615A7 /* Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Observer.m; sourceTree = "<group>"; };
+		BA4136B21DB4F81000A615A7 /* NSObject+CarouselKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CarouselKVO.h"; sourceTree = "<group>"; };
+		BA4136B31DB4F81000A615A7 /* NSObject+CarouselKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CarouselKVO.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,12 @@
 				BA4136991DB482FF00A615A7 /* AppDelegate.m */,
 				BA41369B1DB482FF00A615A7 /* ViewController.h */,
 				BA41369C1DB482FF00A615A7 /* ViewController.m */,
+				BA4136AF1DB4B51800A615A7 /* Observer.h */,
+				BA4136B01DB4B51800A615A7 /* Observer.m */,
+				BA4136AC1DB4B4F600A615A7 /* Person.h */,
+				BA4136AD1DB4B4F600A615A7 /* Person.m */,
+				BA4136B21DB4F81000A615A7 /* NSObject+CarouselKVO.h */,
+				BA4136B31DB4F81000A615A7 /* NSObject+CarouselKVO.m */,
 				BA41369E1DB482FF00A615A7 /* Main.storyboard */,
 				BA4136A11DB482FF00A615A7 /* Assets.xcassets */,
 				BA4136A31DB482FF00A615A7 /* LaunchScreen.storyboard */,
@@ -153,6 +168,9 @@
 			files = (
 				BA41369D1DB482FF00A615A7 /* ViewController.m in Sources */,
 				BA41369A1DB482FF00A615A7 /* AppDelegate.m in Sources */,
+				BA4136B11DB4B51800A615A7 /* Observer.m in Sources */,
+				BA4136AE1DB4B4F600A615A7 /* Person.m in Sources */,
+				BA4136B41DB4F81000A615A7 /* NSObject+CarouselKVO.m in Sources */,
 				BA4136971DB482FF00A615A7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
