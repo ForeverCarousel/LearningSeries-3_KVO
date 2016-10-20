@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-
 typedef void(^NotifyBlock)(NSString* keyPath,id obj, NSDictionary* change);
+
+
+
 
 @interface NSObject (CarouselKVO)
 
@@ -21,5 +21,16 @@ typedef void(^NotifyBlock)(NSString* keyPath,id obj, NSDictionary* change);
 
 
 
+
+@end
+
+
+@interface NotifyModel : NSObject
+
+-(instancetype)initWithObserver:(id)ob key:(NSString*)key Block:(NotifyBlock)blk;
+
+@property (strong, nonatomic) id observer;
+@property (strong, nonatomic) NSString* key;
+@property (copy, nonatomic) NotifyBlock blcok;
 
 @end

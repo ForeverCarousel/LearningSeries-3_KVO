@@ -94,11 +94,12 @@
     
     Person* carousel = [[Person alloc] init];
     [carousel addCarouselObserver:self keyPath:@"name" withNotifyBlock:^(NSString *keyPath, id obj, NSDictionary *change) {
-        
+        NSString* oldValue = change[@"old"];
+        NSString* newValue = change[@"new"];
+        NSLog(@"%@的属性：%@ 发生变化 %@ - > %@",obj,keyPath,oldValue,newValue);
     }];
     
-    
-    
+    carousel.name  = @"wow";
     
 }
 

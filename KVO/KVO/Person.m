@@ -15,6 +15,14 @@
     _name = n;
 }
 
+-(void)setName:(NSString *)name
+{
+    if (_name != name)
+    {
+        _name = name;
+
+    }
+}
 - (void)kvoChangeName:(NSString*) m
 {
     [self willChangeValueForKey:@"name"];
