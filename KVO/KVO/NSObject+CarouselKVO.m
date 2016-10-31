@@ -40,7 +40,7 @@ const char * CarouselKVOAssociateKey;
     //2.生成中间类 注册该类到运行时系统中
     Class midClass = [self intermediateClassFromOriginaClass:NSStringFromClass([self class])];
     
-    //3.修改对象的类归属 将self的class由Person修改为CarouselKVONotifying_Person 所以以下self的类型就不在是Person类了
+    //3.修改对象的类归属 将self的class由Person修改为CarouselKVONotifying_Person 所以以下self的类型就不在是Person类型了
     object_setClass(self, midClass);
     
     //4.重写中间类的setter
@@ -85,7 +85,7 @@ const char * CarouselKVOAssociateKey;
                   为为类和元类结尾的需要索引化的变量提供空间？总之文档就让传0
      */
    Class intermediateClass = objc_allocateClassPair(originalClass, intermediateClassName.UTF8String, 0);
-    //这里一定要及时注册中间了 不然后面可能会出现某些方法调用无效
+    //这里一定要及时注册 不然后面可能会出现某些方法调用无效
     objc_registerClassPair(intermediateClass);
 
    //重写中间类的class方法 用于添加观察者之后 被观察对象调用class方法可以和未添加观察者之前返回同一个类型-，- 不敢确定有什么卵用 猜测系统之所以这么做应该是为了第一不想过度暴露KVO实现的细节  第二应该是防止调用class方法返回的对象在使用KVO之后不一致会造成一些问题 比如说判断是否属于某个类之类的 总之是为了隐藏KVO所带来的不必要变化

@@ -15,6 +15,7 @@
 @interface ViewController ()
 @property (strong, nonatomic) Person* person;
 @property (strong, nonatomic) Observer* obs;
+@property (strong, nonatomic) Person* carousel;
 @end
 
 @implementation ViewController
@@ -50,8 +51,13 @@
     
     [_person removeObserver:_obs forKeyPath:@"name"];
     
-    [self somethingInteresting];
-    
+    UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"自定义KVO" forState:UIControlStateNormal];
+    [btn setBackgroundColor:[UIColor redColor]];
+    btn.frame = CGRectMake(0, 0, 100, 50);
+    btn.center = CGPointMake(0.5*self.view.bounds.size.width, 0.5*self.view.bounds.size.height);
+    [btn addTarget:self action:@selector(somethingInteresting) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
 }
 
 
@@ -69,6 +75,7 @@
  简述KVO的实现：
     当你观察一个对象时，一个新的类会动态被创建。这个类继承自该对象的原本的类，并重写了被观察属性的 setter 方法。自然，重写的 setter 方法会负责在调用原 setter 方法之前和之后，通知所有观察对象值的更改。最后把这个对象的 isa 指针 ( isa 指针告诉 Runtime 系统这个对象的类是什么 ) 指向这个新创建的子类，对象就神奇的变成了新创建的子类的实例。
     原来，这个中间类，继承自原本的那个类。不仅如此，Apple 还重写了 -class 方法，企图欺骗我们这个类没有变，就是原本那个类。
+    所以自定义实现的话就是按照上述过程实现一遍就可以了
     下面的Log可以看到具体的变化：
  
  
@@ -82,7 +89,7 @@
     NSLog(@"添加观察者之后状态：Class : %@   isa : %@",[_person class],[_person valueForKey:@"isa"]);
     Class currentClass = [[_person valueForKey:@"isa"] superclass];
     NSLog(@"添加观察者之后状态：isa superClass : %@",currentClass);
-
+    
     /**
      2016-10-18 17:48:41.817 初始化状态:        Class : Person    isa :Person
      2016-10-18 17:48:41.818 添加观察者之后状态： Class : Person    isa :NSKVONotifying_Person
@@ -90,20 +97,25 @@
 
      可以看到和上面所说的一样会生成一个中间类 NSKVONotifying_Person -->Person   - -但是很明显Apple重写了中间类的class方法  所以返回的class仍然是Person
      然后会重写其set方法 在修改值的方法前后 添加willchange 和 didchange方法 用来通知观察者 被观察对象的属性的值的变化 具体可以看下36-44行处的代码
-    */
+     自定义实现KVO可以使用blcok作为回调方式 使代码更结构化
+     
+     */
     
-    Person* carousel = [[Person alloc] init];
-    [carousel addCarouselObserver:self keyPath:@"name" withNotifyBlock:^(NSString *keyPath, id obj, NSDictionary *change) {
+    
+    self.carousel = [[Person alloc] init];
+    [_carousel addCarouselObserver:self keyPath:@"name" withNotifyBlock:^(NSString *keyPath, id obj, NSDictionary *change) {
         NSString* oldValue = change[@"old"];
         NSString* newValue = change[@"new"];
         NSLog(@"%@的属性：%@ 发生变化 %@ - > %@",obj,keyPath,oldValue,newValue);
     }];
-    
-    carousel.name  = @"wow";
+    [self performSelector:@selector(changeValue) withObject:nil afterDelay:3.0f];
     
 }
 
-
+-(void)changeValue
+{ 
+    _carousel.name  = @"wow";
+}
 
 - (void)didReceiveMemoryWarning
 {
